@@ -1,5 +1,13 @@
 (function() {
+	'use strict';
+
 	var myReact = {};
+
+	var data = [
+		{url: 'http://tinyurl.com/lkevsb9', caption: 'Hong Kong!'},
+		{url: 'http://tinyurl.com/mxkwh56', caption: 'Cows'},
+		{url: 'http://tinyurl.com/nc7jv28', caption: 'Scooters'}
+	];
 
 	myReact.Photo = React.createClass({
 
@@ -34,6 +42,23 @@
 	});
 
 
+	myReact.PhotoGallery = React.createClass({
+
+		render: function() {
+
+			var photos = this.props.photos.map(function(photo){
+				return <myReact.Photo src={photo.url} caption={photo.caption} />
+			});
+
+			return (
+				<div className='photo-gallery'>
+					{photos}
+				</div>
+			);
+		}
+	});
+
+
 	myReact.setEvents = function() {
 		document.getElementsByTagName('body')[0].addEventListener('click', function( event ) {
 			console.log('click count: ' + event.detail);
@@ -43,11 +68,9 @@
 
 
 	myReact.init = function() {
-		React.render(<myReact.Photo src='http://tinyurl.com/lkevsb9' caption='Bla bla!' />, document.querySelectorAll('.testClass')[0]);
-		React.render(<myReact.Photo src='http://tinyurl.com/lkevsb9' caption='Hong Kong!' />, document.querySelector('.testClass2'));
+		React.render(<myReact.PhotoGallery photos={data} />, document.querySelectorAll('.testClass')[0]);
 
 		myReact.setEvents();
-
 	};
 
 

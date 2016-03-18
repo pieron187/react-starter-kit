@@ -1,0 +1,5 @@
+1. clone git
+2. install 	node.js
+3. install:   	npm install http-server -g
+4. go to local folder with files and start server:  http-server
+5. go to http://localhost:8080/    or    http://10.0.25.45:8080/
